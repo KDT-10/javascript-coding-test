@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>최댓값/최솟값 찾기</title>
+  </head>
+  <body>
+    <h1>최댓값/최솟값 찾기</h1>
+    <p>콘솔(F12)을 열어서 결과를 확인하세요.</p>
+
+    <script>
+      // 최댓값/최솟값 찾기는 코딩테스트의 기본 중 기본!
+      // 배열에서 가장 큰 값과 가장 작은 값을 찾는 방법을 배워봅시다.
+
+      // ------------------- 1. 최댓값 찾기 (기본) -------------------
+      console.log("--- 1. 최댓값 찾기 (기본) ---");
+
+      let numbers = [42, 15, 88, 23, 56];
+
+      // 방법 1: for 문으로 찾기
+      let max = numbers[0]; // 첫 번째 값으로 초기화
+
+      for (let i = 1; i < numbers.length; i++) {
+        if (numbers[i] > max) {
+          max = numbers[i]; // 더 큰 값이 나오면 교체
+        }
+      }
+
+      console.log("배열:", numbers);
+      console.log("최댓값:", max); // 88
+
+      // ------------------- 2. 최솟값 찾기 (기본) -------------------
+      console.log("\n--- 2. 최솟값 찾기 (기본) ---");
+
+      let min = numbers[0]; // 첫 번째 값으로 초기화
+
+      for (let i = 1; i < numbers.length; i++) {
+        if (numbers[i] < min) {
+          min = numbers[i]; // 더 작은 값이 나오면 교체
+        }
+      }
+
+      console.log("배열:", numbers);
+      console.log("최솟값:", min); // 15
+
+      // ------------------- 3. 함수로 만들기 -------------------
+      console.log("\n--- 3. 함수로 만들기 ---");
+
+      function findMax(arr) {
+        let max = arr[0];
+        for (let i = 1; i < arr.length; i++) {
+          if (arr[i] > max) {
+            max = arr[i];
+          }
+        }
+        return max;
+      }
+
+      function findMin(arr) {
+        let min = arr[0];
+        for (let i = 1; i < arr.length; i++) {
+          if (arr[i] < min) {
+            min = arr[i];
+          }
+        }
+        return min;
+      }
+
+      let scores = [85, 92, 78, 95, 88];
+      console.log("점수:", scores);
+      console.log("최고 점수:", findMax(scores)); // 95
+      console.log("최저 점수:", findMin(scores)); // 78
+
+      // ------------------- 4. Math.max()와 Math.min() 사용 -------------------
+      console.log("\n--- 4. Math.max()와 Math.min() 사용 ---");
+
+      // JavaScript 내장 함수 활용
+      let temperatures = [15, 22, 18, 25, 12, 28, 20];
+
+      // 스프레드 연산자(...) 사용
+      let maxTemp = Math.max(...temperatures);
+      let minTemp = Math.min(...temperatures);
+
+      console.log("기온:", temperatures);
+      console.log("최고 기온:", maxTemp); // 28
+      console.log("최저 기온:", minTemp); // 12
+
+      // ------------------- 5. 최댓값/최솟값의 인덱스 찾기 -------------------
+      console.log("\n--- 5. 최댓값/최솟값의 인덱스 찾기 ---");
+
+      function findMaxIndex(arr) {
+        let maxIndex = 0;
+        for (let i = 1; i < arr.length; i++) {
+          if (arr[i] > arr[maxIndex]) {
+            maxIndex = i;
+          }
+        }
+        return maxIndex;
+      }
+
+      let prices = [12000, 8500, 15000, 9800, 11000];
+      let maxIndex = findMaxIndex(prices);
+
+      console.log("가격:", prices);
+      console.log("최고가 인덱스:", maxIndex); // 2
+      console.log("최고가:", prices[maxIndex]); // 15000
+
+      // ------------------- 6. 실습 문제 -------------------
+      console.log("\n--- 6. 실습 문제 ---");
+
+      // 문제 1: 두 수의 최댓값과 최솟값
+      function getMaxMin(a, b) {
+        return {
+          max: a > b ? a : b,
+          min: a < b ? a : b,
+        };
+      }
+
+      let result = getMaxMin(10, 25);
+      console.log("10과 25 중:", result); // {max: 25, min: 10}
+
+      // 문제 2: 최댓값과 최솟값의 차이
+      function findDifference(arr) {
+        let max = Math.max(...arr);
+        let min = Math.min(...arr);
+        return max - min;
+      }
+
+      let data = [10, 25, 8, 42, 15];
+      console.log("배열:", data);
+      console.log("최댓값-최솟값:", findDifference(data)); // 34 (42-8)
+
+      // 문제 3: 두 번째로 큰 값 찾기
+      function findSecondMax(arr) {
+        // 1. 배열을 내림차순으로 정렬
+        let sorted = [...arr].sort((a, b) => b - a);
+        // 2. 두 번째 요소 반환
+        return sorted[1];
+      }
+
+      let numbers2 = [42, 15, 88, 23, 56];
+      console.log("배열:", numbers2);
+      console.log("두 번째로 큰 값:", findSecondMax(numbers2)); // 56
+
+      // 문제 4: N개의 수 중 최댓값 3개 찾기
+      function findTopN(arr, n) {
+        let sorted = [...arr].sort((a, b) => b - a);
+        return sorted.slice(0, n);
+      }
+
+      let allScores = [85, 92, 78, 95, 88, 73, 90];
+      console.log("모든 점수:", allScores);
+      console.log("상위 3개:", findTopN(allScores, 3)); // [95, 92, 90]
+
+      // 문제 5: 최댓값과 최솟값을 제외한 평균
+      function averageWithoutExtremes(arr) {
+        let max = Math.max(...arr);
+        let min = Math.min(...arr);
+        let sum = 0;
+        let count = 0;
+
+        for (let i = 0; i < arr.length; i++) {
+          if (arr[i] !== max && arr[i] !== min) {
+            sum += arr[i];
+            count++;
+          }
+        }
+
+        return sum / count;
+      }
+
+      let testScores = [60, 70, 80, 90, 100];
+      console.log("점수:", testScores);
+      console.log(
+        "최고/최저 제외 평균:",
+        averageWithoutExtremes(testScores)
+      ); // 80
+
+      /*
+       * 핵심 정리:
+       * 
+       * 1. 기본 알고리즘:
+       *    let max = arr[0];
+       *    for (let i = 1; i < arr.length; i++) {
+       *      if (arr[i] > max) max = arr[i];
+       *    }
+       * 
+       * 2. 내장 함수 활용:
+       *    Math.max(...arr)
+       *    Math.min(...arr)
+       * 
+       * 3. 주의사항:
+       *    - 빈 배열 체크 필요
+       *    - 초기값 설정 중요 (첫 번째 요소 또는 특정 값)
+       * 
+       * 4. 응용:
+       *    - 인덱스 찾기
+       *    - N번째 큰/작은 값
+       *    - 차이 계산
+       *    - 극값 제외 계산
+       * 
+       * 5. 시간 복잡도:
+       *    - 기본 순회: O(n)
+       *    - 정렬 활용: O(n log n)
+       */
+    </script>
+  </body>
+</html>
+

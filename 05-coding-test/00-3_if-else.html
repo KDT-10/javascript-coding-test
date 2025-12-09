@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>조건문 (if/else)</title>
+  </head>
+  <body>
+    <h1>조건문 (if/else)</h1>
+    <p>콘솔(F12)을 열어서 결과를 확인하세요.</p>
+
+    <script>
+      // 조건문(Conditional Statement)이란?
+      // 특정 조건이 참(true)인지 거짓(false)인지에 따라
+      // 다른 코드를 실행하게 만드는 문법입니다.
+
+      // ------------------- 1. 기본 if 문 -------------------
+      console.log("--- 1. 기본 if 문 ---");
+
+      let age = 20;
+
+      if (age >= 18) {
+        console.log("성인입니다.");
+      }
+
+      // ------------------- 2. if-else 문 -------------------
+      console.log("\n--- 2. if-else 문 ---");
+
+      let score = 75;
+
+      if (score >= 60) {
+        console.log("합격입니다!");
+      } else {
+        console.log("불합격입니다.");
+      }
+
+      // ------------------- 3. if-else if-else 문 -------------------
+      console.log("\n--- 3. if-else if-else 문 ---");
+
+      let grade = 85;
+
+      if (grade >= 90) {
+        console.log("학점: A");
+      } else if (grade >= 80) {
+        console.log("학점: B");
+      } else if (grade >= 70) {
+        console.log("학점: C");
+      } else if (grade >= 60) {
+        console.log("학점: D");
+      } else {
+        console.log("학점: F");
+      }
+
+      // ------------------- 4. 논리 연산자 (&&, ||, !) -------------------
+      console.log("\n--- 4. 논리 연산자 ---");
+
+      let temperature = 25;
+      let isRaining = false;
+
+      // && (AND): 두 조건이 모두 true여야 true
+      if (temperature >= 20 && temperature <= 30) {
+        console.log("날씨가 적당합니다.");
+      }
+
+      // || (OR): 두 조건 중 하나만 true여도 true
+      if (temperature > 30 || isRaining) {
+        console.log("외출하기 좋지 않은 날씨입니다.");
+      } else {
+        console.log("외출하기 좋은 날씨입니다.");
+      }
+
+      // ! (NOT): true를 false로, false를 true로 바꿈
+      if (!isRaining) {
+        console.log("비가 오지 않습니다.");
+      }
+
+      // ------------------- 5. 삼항 연산자 -------------------
+      console.log("\n--- 5. 삼항 연산자 (간단한 조건문) ---");
+
+      let number = 10;
+      let result = number % 2 === 0 ? "짝수" : "홀수";
+      console.log(`${number}은 ${result}입니다.`);
+
+      // 위 코드는 아래와 같습니다:
+      // if (number % 2 === 0) {
+      //   result = "짝수";
+      // } else {
+      //   result = "홀수";
+      // }
+
+      // ------------------- 6. 실습 문제 -------------------
+      console.log("\n--- 6. 실습 문제 ---");
+
+      // 문제 1: 나이에 따른 요금 계산
+      let customerAge = 15;
+      let ticketPrice;
+
+      if (customerAge < 13) {
+        ticketPrice = 5000; // 어린이
+      } else if (customerAge < 19) {
+        ticketPrice = 7000; // 청소년
+      } else if (customerAge < 65) {
+        ticketPrice = 10000; // 성인
+      } else {
+        ticketPrice = 6000; // 경로
+      }
+
+      console.log(
+        `나이 ${customerAge}세의 티켓 가격: ${ticketPrice}원`
+      );
+
+      // 문제 2: 로그인 확인
+      let username = "admin";
+      let password = "1234";
+
+      if (username === "admin" && password === "1234") {
+        console.log("로그인 성공!");
+      } else {
+        console.log("아이디 또는 비밀번호가 틀렸습니다.");
+      }
+
+      // 문제 3: 계절 판별
+      let month = 7;
+      let season;
+
+      if (month >= 3 && month <= 5) {
+        season = "봄";
+      } else if (month >= 6 && month <= 8) {
+        season = "여름";
+      } else if (month >= 9 && month <= 11) {
+        season = "가을";
+      } else {
+        season = "겨울";
+      }
+
+      console.log(`${month}월은 ${season}입니다.`);
+
+      // 문제 4: 최댓값 찾기 (두 수 중)
+      let a = 15;
+      let b = 23;
+      let max = a > b ? a : b;
+
+      console.log(`${a}와 ${b} 중 큰 수: ${max}`);
+
+      /*
+       * 핵심 정리:
+       * 
+       * 1. if 문: 조건이 true일 때만 실행
+       * 2. if-else 문: 조건이 true일 때와 false일 때 다르게 실행
+       * 3. if-else if-else 문: 여러 조건을 순차적으로 확인
+       * 4. 논리 연산자:
+       *    - && (AND): 모두 true
+       *    - || (OR): 하나만 true
+       *    - ! (NOT): 반대로 변경
+       * 5. 삼항 연산자: 조건 ? 참일때값 : 거짓일때값
+       */
+    </script>
+  </body>
+</html>
+

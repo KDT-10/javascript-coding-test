@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>변수와 자료형</title>
+  </head>
+  <body>
+    <h1>변수와 자료형</h1>
+    <p>콘솔(F12)을 열어서 결과를 확인하세요.</p>
+
+    <script>
+      // 변수(Variable)란?
+      // 데이터를 저장하는 '상자'라고 생각하면 됩니다.
+      // JavaScript에서는 let, const를 사용하여 변수를 만듭니다.
+
+      // ------------------- 1. 변수 선언 -------------------
+      console.log("--- 1. 변수 선언 ---");
+
+      let name = "김자두"; // 문자열(String)
+      let age = 25; // 숫자(Number)
+      let isStudent = true; // 불린(Boolean) - true 또는 false
+
+      console.log("이름:", name);
+      console.log("나이:", age);
+      console.log("학생 여부:", isStudent);
+
+      // ------------------- 2. 자료형(Data Type) -------------------
+      console.log("\n--- 2. 자료형 확인 ---");
+
+      // typeof 연산자로 자료형을 확인할 수 있습니다
+      console.log("name의 자료형:", typeof name); // "string"
+      console.log("age의 자료형:", typeof age); // "number"
+      console.log("isStudent의 자료형:", typeof isStudent); // "boolean"
+
+      // ------------------- 3. 변수 재할당 -------------------
+      console.log("\n--- 3. 변수 재할당 ---");
+
+      // let으로 선언한 변수는 값을 변경할 수 있습니다
+      age = 26;
+      console.log("변경된 나이:", age);
+
+      // const로 선언한 변수는 값을 변경할 수 없습니다 (상수)
+      const birthYear = 1999;
+      console.log("태어난 년도:", birthYear);
+
+      // birthYear = 2000; // ❌ 에러! const는 재할당 불가능
+
+      // ------------------- 4. 실습 문제 -------------------
+      console.log("\n--- 4. 실습 문제 ---");
+
+      // 문제 1: 당신의 정보를 저장하는 변수를 만들어보세요
+      let myName = "홍길동"; // 여기에 당신의 이름을 입력하세요
+      let myAge = 20; // 여기에 당신의 나이를 입력하세요
+      let myCity = "서울"; // 여기에 당신이 사는 도시를 입력하세요
+
+      console.log(`안녕하세요! 저는 ${myName}이고, ${myAge}살입니다.`);
+      console.log(`${myCity}에 살고 있습니다.`);
+
+      // 문제 2: 간단한 계산을 해보세요
+      let price = 1000; // 상품 가격
+      let quantity = 5; // 구매 수량
+      let total = price * quantity; // 총 금액 계산
+
+      console.log(`총 금액: ${total}원`);
+
+      // ------------------- 5. 참고: 다양한 자료형 -------------------
+      console.log("\n--- 5. 다양한 자료형 ---");
+
+      let text = "안녕하세요"; // 문자열
+      let number = 42; // 숫자
+      let decimal = 3.14; // 소수점 숫자
+      let isTrue = true; // 불린
+      let nothing = null; // null (값이 없음을 명시)
+      let notDefined; // undefined (값이 할당되지 않음)
+
+      console.log("문자열:", text, typeof text);
+      console.log("정수:", number, typeof number);
+      console.log("소수:", decimal, typeof decimal);
+      console.log("불린:", isTrue, typeof isTrue);
+      console.log("null:", nothing, typeof nothing); // 주의: typeof null은 "object"
+      console.log("undefined:", notDefined, typeof notDefined);
+
+      /*
+       * 핵심 정리:
+       * 
+       * 1. let: 값을 변경할 수 있는 변수
+       * 2. const: 값을 변경할 수 없는 상수
+       * 3. 주요 자료형:
+       *    - string (문자열): "안녕", '반가워'
+       *    - number (숫자): 1, 3.14, -10
+       *    - boolean (불린): true, false
+       *    - undefined: 값이 할당되지 않음
+       *    - null: 값이 없음을 명시
+       * 4. typeof 연산자: 자료형 확인
+       */
+    </script>
+  </body>
+</html>
+

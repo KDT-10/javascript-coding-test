@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>for 반복문</title>
+  </head>
+  <body>
+    <h1>for 반복문 (Loop)</h1>
+    <p>콘솔(F12)을 열어서 결과를 확인하세요.</p>
+
+    <script>
+      // 반복문(Loop)이란?
+      // 같은 코드를 여러 번 반복해서 실행하는 문법입니다.
+      // for문은 반복 횟수를 정확히 알 때 사용합니다.
+
+      // ------------------- 1. 기본 for 문 -------------------
+      console.log("--- 1. 기본 for 문 ---");
+
+      // 1부터 5까지 출력
+      for (let i = 1; i <= 5; i++) {
+        console.log(i);
+      }
+
+      // for 문 구조:
+      // for (초기값; 조건식; 증감식) {
+      //   실행할 코드
+      // }
+
+      // ------------------- 2. 배열 순회 -------------------
+      console.log("\n--- 2. 배열 순회 ---");
+
+      let fruits = ["사과", "바나나", "오렌지", "포도"];
+
+      for (let i = 0; i < fruits.length; i++) {
+        console.log(`${i + 1}번째 과일: ${fruits[i]}`);
+      }
+
+      // ------------------- 3. 역순으로 반복 -------------------
+      console.log("\n--- 3. 역순으로 반복 ---");
+
+      // 5부터 1까지 거꾸로 출력
+      for (let i = 5; i >= 1; i--) {
+        console.log(i);
+      }
+
+      // ------------------- 4. 짝수만 출력 -------------------
+      console.log("\n--- 4. 짝수만 출력 (증감식 2씩) ---");
+
+      for (let i = 0; i <= 10; i += 2) {
+        console.log(i);
+      }
+
+      // ------------------- 5. break와 continue -------------------
+      console.log("\n--- 5. break와 continue ---");
+
+      // break: 반복문을 즉시 종료
+      console.log("break 예제 (3을 찾으면 종료):");
+      for (let i = 1; i <= 5; i++) {
+        if (i === 3) {
+          console.log("3을 찾았습니다! 반복 종료.");
+          break;
+        }
+        console.log(i);
+      }
+
+      // continue: 현재 반복을 건너뛰고 다음 반복으로
+      console.log("\ncontinue 예제 (3만 건너뛰기):");
+      for (let i = 1; i <= 5; i++) {
+        if (i === 3) {
+          console.log("3은 건너뜁니다.");
+          continue;
+        }
+        console.log(i);
+      }
+
+      // ------------------- 6. 중첩 반복문 -------------------
+      console.log("\n--- 6. 중첩 반복문 (구구단) ---");
+
+      // 2단만 출력
+      for (let i = 1; i <= 9; i++) {
+        console.log(`2 × ${i} = ${2 * i}`);
+      }
+
+      // ------------------- 7. 실습 문제 -------------------
+      console.log("\n--- 7. 실습 문제 ---");
+
+      // 문제 1: 1부터 10까지의 합 구하기
+      let sum = 0;
+      for (let i = 1; i <= 10; i++) {
+        sum += i; // sum = sum + i
+      }
+      console.log("1부터 10까지의 합:", sum); // 55
+
+      // 문제 2: 배열의 모든 요소 합계
+      let numbers = [10, 20, 30, 40, 50];
+      let total = 0;
+
+      for (let i = 0; i < numbers.length; i++) {
+        total += numbers[i];
+      }
+      console.log("배열의 합계:", total); // 150
+
+      // 문제 3: 배열에서 최댓값 찾기
+      let scores = [85, 92, 78, 95, 88];
+      let max = scores[0]; // 첫 번째 값으로 초기화
+
+      for (let i = 1; i < scores.length; i++) {
+        if (scores[i] > max) {
+          max = scores[i];
+        }
+      }
+      console.log("최고 점수:", max); // 95
+
+      // 문제 4: 특정 문자 개수 세기
+      let text = "hello world";
+      let count = 0;
+
+      for (let i = 0; i < text.length; i++) {
+        if (text[i] === "o") {
+          count++;
+        }
+      }
+      console.log(`'o'의 개수: ${count}`); // 2
+
+      // 문제 5: 별 찍기 패턴
+      console.log("\n별 찍기:");
+      for (let i = 1; i <= 5; i++) {
+        let stars = "";
+        for (let j = 1; j <= i; j++) {
+          stars += "*";
+        }
+        console.log(stars);
+      }
+
+      /*
+       * 핵심 정리:
+       * 
+       * 1. for 문 구조:
+       *    for (초기값; 조건식; 증감식) { 실행 코드 }
+       * 
+       * 2. 배열 순회:
+       *    for (let i = 0; i < array.length; i++) { }
+       * 
+       * 3. break: 반복문 즉시 종료
+       * 4. continue: 현재 반복만 건너뛰기
+       * 5. 중첩 반복문: for 안에 for 사용 가능
+       * 
+       * 활용 예시:
+       * - 합계 계산
+       * - 최댓값/최솟값 찾기
+       * - 개수 세기
+       * - 패턴 출력
+       */
+    </script>
+  </body>
+</html>
+

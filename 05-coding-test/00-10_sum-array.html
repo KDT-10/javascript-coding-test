@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>배열 합계와 평균</title>
+  </head>
+  <body>
+    <h1>배열 합계와 평균</h1>
+    <p>콘솔(F12)을 열어서 결과를 확인하세요.</p>
+
+    <script>
+      // 배열의 모든 요소를 더하는 것은 매우 자주 사용되는 패턴입니다.
+      // 합계, 평균, 누적 계산 등 다양한 곳에 활용됩니다.
+
+      // ------------------- 1. 배열 합계 구하기 (기본) -------------------
+      console.log("--- 1. 배열 합계 구하기 (기본) ---");
+
+      let numbers = [10, 20, 30, 40, 50];
+      let sum = 0; // 합계를 저장할 변수 (0으로 초기화)
+
+      for (let i = 0; i < numbers.length; i++) {
+        sum += numbers[i]; // sum = sum + numbers[i]
+      }
+
+      console.log("배열:", numbers);
+      console.log("합계:", sum); // 150
+
+      // ------------------- 2. 평균 구하기 -------------------
+      console.log("\n--- 2. 평균 구하기 ---");
+
+      let scores = [85, 90, 78, 92, 88];
+      let total = 0;
+
+      for (let i = 0; i < scores.length; i++) {
+        total += scores[i];
+      }
+
+      let average = total / scores.length;
+
+      console.log("점수:", scores);
+      console.log("합계:", total); // 433
+      console.log("평균:", average); // 86.6
+
+      // ------------------- 3. 함수로 만들기 -------------------
+      console.log("\n--- 3. 함수로 만들기 ---");
+
+      function sumArray(arr) {
+        let sum = 0;
+        for (let i = 0; i < arr.length; i++) {
+          sum += arr[i];
+        }
+        return sum;
+      }
+
+      function getAverage(arr) {
+        return sumArray(arr) / arr.length;
+      }
+
+      let prices = [12000, 8500, 15000, 9800];
+      console.log("가격:", prices);
+      console.log("총액:", sumArray(prices)); // 45300
+      console.log("평균 가격:", getAverage(prices)); // 11325
+
+      // ------------------- 4. reduce() 메서드 활용 -------------------
+      console.log("\n--- 4. reduce() 메서드 활용 ---");
+
+      // reduce(): 배열의 모든 요소를 하나의 값으로 줄임
+      let data = [5, 10, 15, 20, 25];
+
+      let sumWithReduce = data.reduce((acc, curr) => acc + curr, 0);
+
+      console.log("배열:", data);
+      console.log("합계 (reduce):", sumWithReduce); // 75
+
+      // reduce 동작 원리:
+      // 1회: acc=0, curr=5  → 0+5=5
+      // 2회: acc=5, curr=10 → 5+10=15
+      // 3회: acc=15, curr=15 → 15+15=30
+      // 4회: acc=30, curr=20 → 30+20=50
+      // 5회: acc=50, curr=25 → 50+25=75
+
+      // ------------------- 5. 조건부 합계 -------------------
+      console.log("\n--- 5. 조건부 합계 ---");
+
+      // 짝수만 더하기
+      function sumEven(arr) {
+        let sum = 0;
+        for (let i = 0; i < arr.length; i++) {
+          if (arr[i] % 2 === 0) {
+            sum += arr[i];
+          }
+        }
+        return sum;
+      }
+
+      let allNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+      console.log("배열:", allNumbers);
+      console.log("짝수의 합:", sumEven(allNumbers)); // 30 (2+4+6+8+10)
+
+      // 특정 값보다 큰 수만 더하기
+      function sumGreaterThan(arr, threshold) {
+        let sum = 0;
+        for (let i = 0; i < arr.length; i++) {
+          if (arr[i] > threshold) {
+            sum += arr[i];
+          }
+        }
+        return sum;
+      }
+
+      let values = [10, 25, 8, 42, 15, 30];
+      console.log("배열:", values);
+      console.log("20보다 큰 수의 합:", sumGreaterThan(values, 20)); // 97
+
+      // ------------------- 6. 누적 합 배열 만들기 -------------------
+      console.log("\n--- 6. 누적 합 배열 만들기 ---");
+
+      function getCumulativeSum(arr) {
+        let result = [];
+        let sum = 0;
+
+        for (let i = 0; i < arr.length; i++) {
+          sum += arr[i];
+          result.push(sum);
+        }
+
+        return result;
+      }
+
+      let input = [1, 2, 3, 4, 5];
+      let cumulative = getCumulativeSum(input);
+
+      console.log("원본 배열:", input);
+      console.log("누적 합:", cumulative); // [1, 3, 6, 10, 15]
+
+      // ------------------- 7. 실습 문제 -------------------
+      console.log("\n--- 7. 실습 문제 ---");
+
+      // 문제 1: 홀수만의 합계와 짝수만의 합계
+      function sumOddEven(arr) {
+        let oddSum = 0;
+        let evenSum = 0;
+
+        for (let i = 0; i < arr.length; i++) {
+          if (arr[i] % 2 === 0) {
+            evenSum += arr[i];
+          } else {
+            oddSum += arr[i];
+          }
+        }
+
+        return { odd: oddSum, even: evenSum };
+      }
+
+      let nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+      console.log("배열:", nums);
+      console.log("홀수/짝수 합:", sumOddEven(nums)); // {odd: 25, even: 30}
+
+      // 문제 2: 음수 제외하고 합계
+      function sumPositive(arr) {
+        let sum = 0;
+        for (let i = 0; i < arr.length; i++) {
+          if (arr[i] > 0) {
+            sum += arr[i];
+          }
+        }
+        return sum;
+      }
+
+      let mixed = [10, -5, 20, -15, 30, -10, 5];
+      console.log("배열:", mixed);
+      console.log("양수의 합:", sumPositive(mixed)); // 65
+
+      // 문제 3: 가중 평균 (weight average)
+      function weightedAverage(values, weights) {
+        let sum = 0;
+        let weightSum = 0;
+
+        for (let i = 0; i < values.length; i++) {
+          sum += values[i] * weights[i];
+          weightSum += weights[i];
+        }
+
+        return sum / weightSum;
+      }
+
+      let examScores = [80, 90, 85]; // 중간, 기말, 과제
+      let examWeights = [0.3, 0.4, 0.3]; // 가중치
+
+      console.log("점수:", examScores);
+      console.log("가중치:", examWeights);
+      console.log("가중 평균:", weightedAverage(examScores, examWeights));
+
+      // 문제 4: 구간 합 (범위 내 합계)
+      function rangeSum(arr, start, end) {
+        let sum = 0;
+        for (let i = start; i <= end && i < arr.length; i++) {
+          sum += arr[i];
+        }
+        return sum;
+      }
+
+      let sequence = [10, 20, 30, 40, 50, 60];
+      console.log("배열:", sequence);
+      console.log("인덱스 1~3 합:", rangeSum(sequence, 1, 3)); // 90
+
+      // 문제 5: 절대값의 합
+      function sumAbsolute(arr) {
+        let sum = 0;
+        for (let i = 0; i < arr.length; i++) {
+          sum += Math.abs(arr[i]);
+        }
+        return sum;
+      }
+
+      let signedNumbers = [-10, 20, -30, 40, -5];
+      console.log("배열:", signedNumbers);
+      console.log("절대값의 합:", sumAbsolute(signedNumbers)); // 105
+
+      /*
+       * 핵심 정리:
+       * 
+       * 1. 기본 패턴:
+       *    let sum = 0;
+       *    for (let i = 0; i < arr.length; i++) {
+       *      sum += arr[i];
+       *    }
+       * 
+       * 2. 평균 계산:
+       *    average = sum / arr.length
+       * 
+       * 3. reduce() 메서드:
+       *    arr.reduce((acc, curr) => acc + curr, 0)
+       * 
+       * 4. 응용:
+       *    - 조건부 합계 (짝수, 홀수, 양수 등)
+       *    - 누적 합
+       *    - 가중 평균
+       *    - 구간 합
+       * 
+       * 5. 활용 예시:
+       *    - 장바구니 총액 계산
+       *    - 성적 평균 계산
+       *    - 통계 데이터 분석
+       *    - 재고 관리
+       */
+    </script>
+  </body>
+</html>
+
